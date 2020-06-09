@@ -30,6 +30,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 
 Plug 'morhetz/gruvbox'
 
@@ -116,7 +117,7 @@ endfu
 
 let NERDTreeShowHidden=1
 map <C-a> :NERDTreeToggle<CR>
-map <leader>r :NERDTreeRefreshRoot<CR>
+map <leader><silent>r :NERDTreeRefreshRoot<CR>
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -137,6 +138,13 @@ let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-css',
     \]
+
+" Enable to see non-printable chars
+" set list
+set autoread
+set updatetime=500
+au CursorHold * silent! checktime
+au FocusLost * silent! wa
 
 set virtualedit=onemore
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -187,15 +195,18 @@ map <M-Down> <c-w>j
 map <C-f> :FZF<CR>
 map <C-p> :GFiles<CR>
 
+"Find text in file
+map <leader>a :Ack<space>' '
 
 "Git short cut
 nmap <leader>gs :G <CR>
 nmap <leader>gr :diffget //3<CR>
 nmap <leader>gl :diffget //2<CR>
 nmap <leader>gc :Git commit -m '[FRONT] '
+nmap <leader>gcb :Git checkout 
 
 "Ranger
-" nmap <leader>r :<C-u>Ranger<CR>
+"nmap <leader>r :<C-u>Ranger<CR>
 
 "Prettier
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -217,7 +228,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=4
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -301,11 +312,11 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+"xmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
+"nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 "map <leader>qf  <Plug>(coc-fix-current)
 
