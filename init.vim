@@ -141,6 +141,12 @@ let g:coc_global_extensions = [
     \ 'coc-css',
     \]
 
+"change size window
+map <leader>l :vertical resiz +10<CR>
+map <leader>h :vertical resiz +10<CR>
+map <leader>j :resiz -10<CR>
+map <leader>k :resiz +10<CR>
+
 " Enable to see non-printable chars
 " set list
 set autoread
