@@ -143,7 +143,7 @@ let g:coc_global_extensions = [
 
 "change size window
 map <leader>l :vertical resiz +10<CR>
-map <leader>h :vertical resiz +10<CR>
+map <leader>h :vertical resiz -10<CR>
 map <leader>j :resiz -10<CR>
 map <leader>k :resiz +10<CR>
 
