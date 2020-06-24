@@ -55,11 +55,15 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 Plug 'posva/vim-vue'
-
+Plug 'digitaltoad/vim-pug'
 "Plug 'majutsushi/tagbar'
 
-"show language on airline
+"show language on airline, only Linux
 Plug 'lyokha/vim-xkbswitch'
+
+"Translate, need to install https://github.com/soimort/translate-shell 
+Plug 'echuraev/translate-shell.vim', { 'do': 'wget -O ~/.config/nvim/trans git.io/trans && chmod +x ~/.config/nvim/trans' }
+
 "not workin width coc(
 "Plug 'Shougo/deoplete.nvim'
 " All of your Plugs must be added before the following line
@@ -78,10 +82,8 @@ set number "show number line
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'
 let g:XkbSwitchIMappings = ['ru']
-" :set list lcs=tab:\|\
-" let g:indent_guides_enable_on_vim_startup = 1
-"let g:indentLine_char = '¦'
-"let g:indentLine_color_term = 155
+
+let g:trans_bin = "~/.config/nvim"
 
 set omnifunc=syntaxcomplete#Complete
 let g:user_emmet_leader_key = ','
@@ -116,7 +118,7 @@ fu! NERDCommenter_after()
 endfu
 
 let NERDTreeShowHidden=1
-map <C-a> :NERDTreeToggle<CR>
+map <leader><Tab> :NERDTreeToggle<CR>
 map <leader><silent>r :NERDTreeRefreshRoot<CR>
 
 let g:NERDTreeIndicatorMapCustom = {
@@ -196,13 +198,13 @@ map <C-f> :FZF<CR>
 map <C-p> :GFiles<CR>
 
 "Find text in file
-map <leader>a :Ack<space>' '
+map <leader>a :Ack<space>'<LEFT>'
 
 "Git short cut
 nmap <leader>gs :G <CR>
 nmap <leader>gr :diffget //3<CR>
 nmap <leader>gl :diffget //2<CR>
-nmap <leader>gc :Git commit -m '[FRONT] '
+nmap <leader>gc :Git commit -m '[FRONT]<space><LEFT>'
 nmap <leader>gcb :Git checkout 
 
 "Ranger
@@ -228,7 +230,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=4
+set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -371,6 +373,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 " helpers keys
+" <left>         Carriage
 " <BS>           Backspace
 " <Tab>          Tab
 " <CR>           Enter
