@@ -48,7 +48,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 Plug 'preservim/nerdcommenter'
-" Plug 'joom/vim-commentary'
 
 Plug 'francoiscabrol/ranger.vim'
 
@@ -59,7 +58,9 @@ Plug 'digitaltoad/vim-pug'
 Plug 'tasn/vim-tsx'
 
 "show language on airline, only Linux
-Plug 'lyokha/vim-xkbswitch'
+if !has("macunix")
+  Plug 'lyokha/vim-xkbswitch'
+endif
 
 "Translate, need to install https://github.com/soimort/translate-shell 
 Plug 'echuraev/translate-shell.vim', { 'do': 'wget -O ~/.config/nvim/trans git.io/trans && chmod +x ~/.config/nvim/trans' }
@@ -121,8 +122,9 @@ fu! NERDCommenter_after()
 endfu
 
 let NERDTreeShowHidden=1
+
 map <leader><Tab> :NERDTreeToggle<CR>
-map <leader><silent>r :NERDTreeRefreshRoot<CR>
+map <leader>r :NERDTreeRefreshRoot<CR>
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
