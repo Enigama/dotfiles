@@ -56,13 +56,16 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 Plug 'posva/vim-vue'
 Plug 'digitaltoad/vim-pug'
-"Plug 'majutsushi/tagbar'
+Plug 'tasn/vim-tsx'
 
 "show language on airline, only Linux
 Plug 'lyokha/vim-xkbswitch'
 
 "Translate, need to install https://github.com/soimort/translate-shell 
 Plug 'echuraev/translate-shell.vim', { 'do': 'wget -O ~/.config/nvim/trans git.io/trans && chmod +x ~/.config/nvim/trans' }
+
+"font with icon
+Plug 'ryanoasis/vim-devicons'
 
 "not workin width coc(
 "Plug 'Shougo/deoplete.nvim'
