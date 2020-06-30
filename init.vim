@@ -36,6 +36,7 @@ Plug 'morhetz/gruvbox'
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 Plug 'yggdroot/indentline'
 
@@ -83,6 +84,7 @@ let g:javascript_plugin_jsdoc = 1
 
 set number "show number line
 
+"set keymap=russian-jcukenwin
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'
 let g:XkbSwitchIMappings = ['ru']
