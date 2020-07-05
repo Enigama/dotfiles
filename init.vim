@@ -84,15 +84,16 @@ let g:javascript_plugin_jsdoc = 1
 
 set number "show number line
 
-"set keymap=russian-jcukenwin
-let g:XkbSwitchEnabled = 1
-let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'
-let g:XkbSwitchIMappings = ['ru']
+if !has("macunix")
+  let g:XkbSwitchEnabled = 1
+  let g:XkbSwitchLib = '/usr/local/lib/libxkbswitch.so'
+  let g:XkbSwitchIMappings = ['ru']
+endif
 
 let g:trans_bin = "~/.config/nvim"
 
 set omnifunc=syntaxcomplete#Complete
-let g:user_emmet_leader_key = ','
+let g:user_emmet_leader_key = '\'
 
 let g:airline#extensions#tabline#formatter = 'jsformatter'
 let g:airline_powerline_fonts = 1
@@ -217,7 +218,7 @@ map <leader>a :Ack<space>'<LEFT>'
 nmap <leader>gs :G <CR>
 nmap <leader>gr :diffget //3<CR>
 nmap <leader>gl :diffget //2<CR>
-nmap <leader>gc :Git commit -m '[FRONT]<space><LEFT>'
+nmap <leader>gc :Git commit -m '[FRONT] <space><LEFT>
 nmap <leader>gcb :Git checkout 
 
 "Ranger
