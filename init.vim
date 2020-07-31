@@ -1,14 +1,14 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 autocmd vimenter * colorscheme gruvbox
+set clipboard=unnamedplus
 
 call plug#begin()
 " The following are examples of different formats supported.
 " plugin on GitHub repo
 Plug 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
-" Plug 'L9'
-" Git plugin not hosted on GitHub
+" Plug 'L9' Git plugin not hosted on GitHub
 " Plug 'git://git.wincent.com/command-t.git'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
