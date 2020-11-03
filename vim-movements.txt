@@ -1,0 +1,19 @@
+Select to all between any bracket.
+Shif+v
+f + ({[
+% + ]})
+
+When coretka in ({[ 
+press % to the end ]})
+
+Delet inside {} () []
+d+i+ [{(
+
+Delet with bracket.
+d+a+ [{(
+
+Delet and start write inside bracket || Delet with bracket and write, relpace i to a.
+c+i+ [{(
+
+Yank, Delete, Relace some in "", '', ``.
+press in line c+i+"", '', ``
