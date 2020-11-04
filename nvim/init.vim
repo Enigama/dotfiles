@@ -30,7 +30,11 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'mileszs/ack.vim'
+
+"Git committed or not
+Plug 'airblade/vim-gitgutter'
 
 Plug 'morhetz/gruvbox'
 
@@ -47,6 +51,9 @@ Plug 'marijnh/tern_for_vim'
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+
+"Js documentation https://github.com/heavenshell/vim-jsdoc
+Plug 'heavenshell/vim-jsdoc'
 
 Plug 'preservim/nerdcommenter'
 
@@ -71,6 +78,7 @@ Plug 'ryanoasis/vim-devicons'
 
 "not workin width coc(
 "Plug 'Shougo/deoplete.nvim'
+
 " All of your Plugs must be added before the following line
 call plug#end()
 " required
@@ -80,9 +88,21 @@ filetype plugin indent on    " required
 :let mapleader = ' '
 map <F1> :
 
+"text checker
+set spell spelllang=en_us
+"autocmd BufRead,BufNewFile *.md setlocal spell
+"autocmd BufRead,BufNewFile *.txt setlocal spell
+"autocmd BufRead,BufNewFile *.php setlocal spell
+"autocmd BufRead,BufNewFile *.vue setlocal spell
+"autocmd BufRead,BufNewFile *.js setlocal spell
+"autocmd FileType gitcommit setlocal spell
+
 let g:javascript_plugin_jsdoc = 1
 
 set number "show number line
+
+"dynamic line number
+set relativenumber
 
 if !has("macunix")
   let g:XkbSwitchEnabled = 1
@@ -214,12 +234,16 @@ map <C-p> :GFiles<CR>
 "Find text in file
 map <leader>a :Ack<space>'<LEFT>'
 
+let g:fzf_layout = {'window': {'width': 0.7, 'height': 0.7}}
+let $FZF_DEFAUTL_OPTS = '--reverse'
+
 "Git short cut
 nmap <leader>gs :G <CR>
 nmap <leader>gr :diffget //3<CR>
 nmap <leader>gl :diffget //2<CR>
-nmap <leader>gc :Git commit -m '[FRONT] <space><LEFT>
-nmap <leader>gcb :Git checkout 
+nmap <leader>gcm :Git commit -m '[FRONT] <space><LEFT>
+"nmap <leader>gcb :Git checkout 
+nmap <leader>gc :GCheckout<CR> 
 
 "Ranger
 "nmap <leader>r :<C-u>Ranger<CR>
