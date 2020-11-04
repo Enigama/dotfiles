@@ -1,0 +1,22 @@
+{
+  "suggest.noselect": true,
+  "vetur.trace.server": "messages",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact"
+  ],
+
+  "coc.source.omni.filetypes": [
+    "css",
+    "sass",
+    "scss",
+    "vue",
+    "javascript",
+    "jsx",
+    "html",
+    "pug"
+  ]
+}
