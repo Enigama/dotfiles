@@ -3,17 +3,17 @@ Shif+v
 f + ({[
 % + ]})
 
-When coretka in ({[ 
+When carriage in ({[ 
 press % to the end ]})
 
-Delet inside {} () []
+Delete inside {} () []
 d+i+ [{(
 
-Delet with bracket.
+Delete with bracket.
 d+a+ [{(
 
-Delet and start write inside bracket || Delet with bracket and write, relpace i to a.
+Delete and start write inside bracket || delete with bracket and write, replace i to a.
 c+i+ [{(
 
-Yank, Delete, Relace some in "", '', ``.
-press in line c+i+"", '', ``
+Yank, Delete, replace some in "", '', ``.
+Pres in line c+i+"", '', ``
