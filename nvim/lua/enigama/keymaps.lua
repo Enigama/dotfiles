@@ -87,7 +87,7 @@ keymap("n", "<leader>hl", "<cmd>lua require'harpoon.ui'.nav_file(4)<cr>", opts)
 keymap("n", "<leader>h;", "<cmd>lua require'harpoon.ui'.nav_file(5)<cr>", opts)
 
 -- Nvimtree
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<cr><cr>", opts)
 keymap("n", "<leader>ei", ":NvimTreeFindFileToggle<cr>", opts)
 keymap("n", "<leader>er", ":NvimTreeRefresh<cr>", opts)
 

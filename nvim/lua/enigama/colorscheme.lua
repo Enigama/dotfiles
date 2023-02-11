@@ -6,6 +6,9 @@ if not status_ok then
   return
 end
 
+require("tokyonight").setup({
+    style = "night",
+})
 -- require("material").setup({
 --   lualine_style = 'default'
 -- })
