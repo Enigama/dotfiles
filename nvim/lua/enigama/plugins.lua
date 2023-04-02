@@ -124,6 +124,7 @@ return packer.startup(function(use)
         use "nvim-treesitter/playground"
         use "p00f/nvim-ts-rainbow"
         use 'JoosepAlviste/nvim-ts-context-commentstring'
+        use 'nvim-treesitter/nvim-treesitter-context' -- for fix function at the top of the screen
 
         -- Git
         use "lewis6991/gitsigns.nvim"

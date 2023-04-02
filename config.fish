@@ -66,12 +66,12 @@ end
 ##
 
 function V
-    vim .
+    nvim
 end
 
 #Confiuration files fast
 function cvim
-    nvim ~/.config/nvim/init.vim
+    nvim ~/.config/nvim/init.lua
 end
 
 function cfish
