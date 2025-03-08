@@ -78,3 +78,12 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
 5. `nvim` btw `sudo snap install nvim --classic`
 6. `yarn` optional but necessary for fish shortcuts `npm install --global yarn`
 7. `stow` `sudo apt install stow` this for linking dotfiles
+
+## Fonts
+
+Name FiraCode Nerd Font
+
+```
+https://www.nerdfonts.com/font-downloads
+install FiraCode Nerd Font Propo
+```
