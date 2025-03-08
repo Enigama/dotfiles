@@ -71,3 +71,4 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
 
 4. `nvim` btw `sudo snap install nvim --classic`
 5. `yarn` optional but necessary for fish shortcuts `npm install --global yarn`
+6. `stow` `sudo apt install stow` this for linking dotfiles
