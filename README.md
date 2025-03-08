@@ -33,10 +33,10 @@ First of all we have to have all required dependencies for each part of soul.
 | Package | Description | Command(s) |
 | --------|------------ | -----------|
 |rgrep| Telescope |`sudo apt-get install ripgrep`|
-| nvm | Nodejs manager| `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh \| bash & source ~/.bashrc`|
+| nvm | Nodejs manager| `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh \| bash && source ~/.bashrc`|
 |npm| `-`|`sudo apt install npm`?|
 |gh| github cli|`sudo snap install gh`|
-|python|`-`|`sudo apt install python3.12`|
+|python|`-`|`sudo apt install python3`|
 |luarock| `-` |`sudo apt install luarocks`|
 
 ## Installation
@@ -63,9 +63,11 @@ sudo chsh -s /usr/local/bin/fish
 
 Plugin manager for `fish` -> `fisher` repo `https://github.com/jorgebucaran/fisher`
 
+Do it in fish shell
+
 ```
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher && fisher install jorgebucaran/nvm.fish
 ```
 
-4. `nvim` btw `sudo apt-get install neovim`
+4. `nvim` btw `sudo snap install nvim --classic`
 5. `yarn` optional but necessary for fish shortcuts `npm install --global yarn`
