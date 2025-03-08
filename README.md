@@ -52,13 +52,19 @@ To set kitty as default terminal run this command and choose kitty.
 sudo update-alternatives --config x-terminal-emulator
 ```
 
-3. `fish` shell
+3. `tmux` `sudo apt install tmux` To make it works properly check the guide
+
+```
+https://github.com/tmux-plugins/tpm
+```
+
+4. `fish` shell
    `sudo apt-get install fish`
 
 Make fish default shell:
 
 ```
-sudo chsh -s /usr/local/bin/fish
+chsh -s $(which fish)
 ```
 
 Plugin manager for `fish` -> `fisher` repo `https://github.com/jorgebucaran/fisher`
@@ -69,6 +75,6 @@ Do it in fish shell
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher && fisher install jorgebucaran/nvm.fish
 ```
 
-4. `nvim` btw `sudo snap install nvim --classic`
-5. `yarn` optional but necessary for fish shortcuts `npm install --global yarn`
-6. `stow` `sudo apt install stow` this for linking dotfiles
+5. `nvim` btw `sudo snap install nvim --classic`
+6. `yarn` optional but necessary for fish shortcuts `npm install --global yarn`
+7. `stow` `sudo apt install stow` this for linking dotfiles
