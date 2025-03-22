@@ -39,6 +39,7 @@ First of all we have to have all required dependencies for each part of soul.
 |gh| github cli|`sudo snap install gh`|
 |python|`-`|`sudo apt install python3`|
 |luarock| `-` |`sudo apt install luarocks`|
+|jsregexp| for luasnip |`sudo luarocks install jsregexp`|
 
 ## Installation
 
