@@ -20,7 +20,7 @@ function M.config()
 			},
 		},
 		suggestion = {
-			enabled = false,
+			enabled = true,
 			auto_trigger = true,
 			keymap = {
 				accept = "<c-l>",
