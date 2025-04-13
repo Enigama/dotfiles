@@ -15,6 +15,7 @@ spec("enigama.colorscheme")
 spec("enigama.devicons")
 spec("enigama.treesitter")
 
+spec("enigama.miss")
 spec("enigama.mason")
 spec("enigama.schemastore")
 spec("enigama.lspsaga")
