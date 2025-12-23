@@ -10,6 +10,20 @@ set MAC_AIRPODS_PRO 08:FF:44:17:B3:B7
 #Could be changed last number :C3,4...
 set MAC_MOUSE D2:33:87:CC:53:C3
 
+# Load OpenAI key from file
+set -l openai_key (string trim (cat ~/.config/ai/OPENAI_API_key))
+set -gx OPENAI_API_KEY $openai_key
+
+set -l jira_token (string trim (cat ~/.config/JIRA_TOKEN 2>/dev/null))
+set -gx JIRA_TOKEN $jira_token
+
+set -l jira_url (string trim (cat ~/.config/JIRA_URL 2>/dev/null))
+set -gx JIRA_URL $jira_url
+
+set -l electricity_token (string trim (cat ~/.config/ELECTRICITY_TOKEN))
+set -gx ELECTRICITY_TOKEN  $electricity_token
+
+# direnv hook fish | source
 
 if not pgrep -u (whoami) ssh-agent > /dev/null
     eval (ssh-agent -c)
@@ -31,7 +45,13 @@ function nci
 end
 
 function ys
-    yarn start
+    set -lx BROWSER ~/.local/bin/chrome-profile1
+
+    if count $argv[1] >/dev/null
+        yarn start:$argv[1]
+    else
+        yarn start
+    end
 end
 
 function yt
@@ -112,15 +132,23 @@ function gwa
     git worktree add $argv
 end
 
-#This is amaizing but we should split it up, and make it more readable
+#TODO: This is amaizing but we should split it up, and make it more readable
+#TODO: Make up option for something like this: origin/main. It's helpful when we checked out in original folder of project and wanna create new branch based on main.
 function sw -d "Args: argv[1] - ticket number, argv[2] - folder name. Uses prefix: CTVUI- but we can use argv[3] to change it. Create a new folder or use old one if exists, than create a new folder for worktree with name CTVUI-argv[1]"
     #define a prefix, default is CTVUI, or if we have argv[3] we use it
     set -l prefix CTVUI
+    set -l folder worktrees
+
+    if count $argv[2] >/dev/null
+        set folder $argv[2]
+    end
+
+
     if count $argv[3] >/dev/null
         set prefix $argv[3]
     end
 
-    git worktree add -b $prefix-$argv[1] ../$argv[2]/$prefix-$argv[1] && ../$argv[2]/$prefix-$argv[1]
+    git worktree add -b $prefix-$argv[1] ~/Projects/$folder/$prefix-$argv[1] && ~/Projects/$folder/$prefix-$argv[1]
     tmuxr $prefix-$argv[1]
     tmux send-keys -t . "ynvim" C-m
 end
@@ -178,6 +206,10 @@ end
 
 function cdac
     nvim ~/Dactyl/config/dac_man_5x6.keymap
+end
+
+function ctsc
+ nvim (which tailscale-launch)
 end
 
 # Starter
@@ -240,3 +272,11 @@ end
 function reminder
     cat ~/Personal/doc.txt
 end
+
+function suspend
+    systemctl suspend
+end
+
+# GitHub Dash
+alias gh-work='GH_HOST=work.github.com gh dash --config ~/.config/gh-dash/config-work.yml'
+alias gh-personal='GH_HOST=github.com gh dash --config ~/.config/gh-dash/config-personal.yml'
