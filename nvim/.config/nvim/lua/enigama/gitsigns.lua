@@ -8,12 +8,34 @@ M.config = function()
 
 	local wk = require("which-key")
 	wk.add({
-		{"]c", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", desc = "Next Hunk" },
-		{"[c",  "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", desc = "Prev Hunk" },
-		{"<leader>hp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk" },
-		{"<leader>hb", "<cmd>lua require 'gitsigns'.toggle_current_line_blame()<cr>", desc = "Blame" },
-		{"<leader>hn", "<cmd>lua require 'gitsigns'.toggle_numhl()<cr>", desc = "Highlight numbers" },
-		{"<leader>hl", "<cmd>lua require 'gitsigns'.toggle_linehl()<cr>", desc = "Highlight lines" },
+		{ "]c", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", desc = "Next Hunk" },
+		{ "[c", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", desc = "Prev Hunk" },
+		{
+			"<leader>ga",
+			"<cmd>lua require 'gitsigns'.stage_hunk()<cr>",
+			desc = "Stage Hunk, add to staging",
+		},
+		{
+			"<leader>gr",
+			"<cmd>lua require 'gitsigns'.reset_hunk()<cr>",
+			desc = "Reset Hunk",
+		},
+		{
+			"<leader>hp",
+			"<cmd>lua require 'gitsigns'.preview_hunk()<cr>",
+			desc = "Preview Hunk",
+		},
+		{ "<leader>hb", "<cmd>lua require 'gitsigns'.toggle_current_line_blame()<cr>", desc = "Blame" },
+		{
+			"<leader>hn",
+			"<cmd>lua require 'gitsigns'.toggle_numhl()<cr>",
+			desc = "Highlight numbers",
+		},
+		{
+			"<leader>hl",
+			"<cmd>lua require 'gitsigns'.toggle_linehl()<cr>",
+			desc = "Highlight lines",
+		},
 	})
 
 	require("gitsigns").setup({
@@ -27,8 +49,8 @@ M.config = function()
 			change = {
 				-- hl = "GitSignsChange",
 				text = icons.ui.BoldLineDashedMiddle,
-			-- 	numhl = "GitSignsChangeNr",
-			-- 	linehl = "GitSignsChangeLn",
+				-- 	numhl = "GitSignsChangeNr",
+				-- 	linehl = "GitSignsChangeLn",
 			},
 			delete = {
 				-- hl = "GitSignsDelete",
@@ -55,7 +77,7 @@ M.config = function()
 		},
 		attach_to_untracked = true,
 		current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-		update_debounce = 200,
+		update_debounce = 500,
 		max_file_length = 40000,
 		preview_config = {
 			border = "rounded",

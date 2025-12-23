@@ -59,7 +59,9 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- Clear search by /
+-- Clear search by ,
 keymap("n", ",", "<cmd>:noh<cr>", opts)
 
 vim.api.nvim_set_keymap("t", "<C-;>", "<C-\\><C-n>", opts)
+
+keymap("n", "<leader>P", ":Alpha<CR>", opts)

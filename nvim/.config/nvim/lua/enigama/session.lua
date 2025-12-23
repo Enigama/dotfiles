@@ -5,7 +5,7 @@ local M = {
 function M.config()
 	local wk = require("which-key")
 	wk.add({
-		{"<C-s>", "<cmd>SessionSave<cr>", desc = "Session Save " },
+		{ "<C-s>", "<cmd>AutoSession save<cr>", desc = "Session Save " },
 	})
 	require("auto-session").setup({
 		auto_session_root_dir = "~/nvim-sessions/",

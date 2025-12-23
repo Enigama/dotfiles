@@ -19,17 +19,22 @@ local M = {
 function M.config()
 	local wk = require("which-key")
 	wk.add({
-		{"<leader>tp", ":Neotest summary<cr>", desc = "Test panel" },
-		{"<leader>to", ":Neotest output-panel<cr>", desc = "Test output" },
+		{ "<leader>tp", ":Neotest summary<cr>", desc = "Test panel" },
+		{ "<leader>to", ":Neotest output-panel<cr>", desc = "Test output" },
 	})
 
 	---@diagnostic disable: missing-fields
 	require("neotest").setup({
 		discovery = {
-			enabled = false,
+			-- enabled = true,
+			root = vim.fn.getcwd(),
 		},
 		adapters = {
-			require("neotest-vitest"),
+			require("neotest-vitest")({
+				filter_dir = function(name, rel_path, root)
+					return name ~= "node_modules"
+				end,
+			}),
 			-- require("neotest-vim-test")({
 			--     ignore_file_types = { "vim", "lua", "javascript", "typescript" },
 			-- }),

@@ -3,6 +3,7 @@ require("enigama.options")
 require("enigama.keymaps")
 require("enigama.autocmds")
 
+spec("enigama.alpha")
 -- spec("enigama.extras.fidget")
 spec("enigama.extras.flash")
 spec("enigama.extras.bqf")
@@ -22,11 +23,15 @@ spec("enigama.lspsaga")
 spec("enigama.lspconfig")
 spec("enigama.cmp")
 spec("enigama.mark")
+-- Jenkins Integration (moved after which-key)
+--spec("enigama.jenkins") -- Commented out to avoid Telescope conflicts
+spec("enigama.jira")
 spec("enigama.telescope")
 spec("enigama.none-ls")
 spec("enigama.illuminate")
 spec("enigama.cmd")
 --
+spec("enigama.lazyGit")
 spec("enigama.git-diff")
 spec("enigama.git-figutive")
 spec("enigama.gitsigns")
@@ -49,7 +54,12 @@ spec("enigama.session")
 spec("enigama.project")
 spec("enigama.indentline")
 spec("enigama.toggleterm")
+
+-- AI
 spec("enigama.copilot")
+
+-- Jenkins Integration
+--spec("enigama.jenkins")
 
 require("enigama.lazy")
 
