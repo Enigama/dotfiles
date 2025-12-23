@@ -81,6 +81,10 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
 6. `yarn` optional but necessary for fish shortcuts `npm install --global yarn`
 7. `stow` `sudo apt install stow` this for linking dotfiles
 
+## Git Setup
+
+For managing multiple GitHub accounts (personal/work), see [GIT_SETUP.md](GIT_SETUP.md).
+
 ## Fonts
 
 [FiraCode Nerd Font](https://www.nerdfonts.com/font-downloads)
