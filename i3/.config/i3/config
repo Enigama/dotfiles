@@ -199,6 +199,7 @@ bar {
 	status_command ~/.config/i3/bumblebee-status/bumblebee-status \
      	-m memory battery date time pasink pasource \
      	-p time.format="%H:%M" \
+     	-p date.format="%a %m/%d/%Y" \
      	-t gruvbox-powerline
 }
 #Colors
@@ -229,7 +230,7 @@ bindsym $mod+c exec google-chrome
 bindsym $mod+p exec flameshot gui
 bindsym $mod+n exec nautilus
 bindsym $mod+m exec slack
-bindsym $mod+q execindicator-sound-switcher
+bindsym $mod+q exec indicator-sound-switcher
 
 # Volume
 bindsym $mod+[ exec dmenu tr -d '\n' | gnome-terminal "amixer -D pulse sset Master 10%"
@@ -244,6 +245,3 @@ exec --no-startup-id compton
 
 #enable touchpad tap-click work
 exec xinput set-prop "ELAN074B:00 04F3:3169 Touchpad" "libinput Tapping Enabled" 1
-
-#Load layout
-# exec --no-startup-id ~/.config/i3/restore
