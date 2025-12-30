@@ -132,24 +132,48 @@ function gwa
     git worktree add $argv
 end
 
-#TODO: This is amaizing but we should split it up, and make it more readable
-#TODO: Make up option for something like this: origin/main. It's helpful when we checked out in original folder of project and wanna create new branch based on main.
-function sw -d "Args: argv[1] - ticket number, argv[2] - folder name. Uses prefix: CTVUI- but we can use argv[3] to change it. Create a new folder or use old one if exists, than create a new folder for worktree with name CTVUI-argv[1]"
-    #define a prefix, default is CTVUI, or if we have argv[3] we use it
-    set -l prefix CTVUI
-    set -l folder worktrees
+function sw -d "Create git worktree and tmux session"
+    if set -q argv[1]; and contains -- $argv[1] -h --help
+        echo "Usage:"
+        echo "  sw <ticket> [folder] [prefix]"
+        echo
+        echo "Arguments:"
+        echo "  ticket   Ticket number (required)"
+        echo "  folder   Worktrees folder (default: worktrees)"
+        echo "  prefix   Branch prefix (default: CTVUI)"
+        echo
+        echo "Example:"
+        echo "  sw 123"
+        echo "  sw 123 infra CORE"
+        return 0
+    end
 
-    if count $argv[2] >/dev/null
+    if not set -q argv[1]
+        echo "sw: missing ticket number"
+        echo "Try: sw --help"
+        return 1
+    end
+
+    set -l ticket $argv[1]
+    set -l folder worktrees
+    set -l prefix CTVUI
+
+    if set -q argv[2]
         set folder $argv[2]
     end
 
-
-    if count $argv[3] >/dev/null
+    if set -q argv[3]
         set prefix $argv[3]
     end
 
-    git worktree add -b $prefix-$argv[1] ~/Projects/$folder/$prefix-$argv[1] && ~/Projects/$folder/$prefix-$argv[1]
-    tmuxr $prefix-$argv[1]
+    set -l branch "$prefix-$ticket"
+    set -l path "$HOME/Projects/$folder/$branch"
+
+    git worktree add -b $branch $path
+    or return 1
+
+    cd $path
+    tmuxr $branch
     tmux send-keys -t . "ynvim" C-m
 end
 
