@@ -35,6 +35,7 @@ spec("enigama.lazyGit")
 spec("enigama.git-diff")
 spec("enigama.git-figutive")
 spec("enigama.gitsigns")
+spec("enigama.remarks")
 spec("enigama.octo")
 --
 spec("enigama.whichkey")
