@@ -280,3 +280,4 @@ end
 # GitHub Dash
 alias gh-work='GH_HOST=work.github.com gh dash --config ~/.config/gh-dash/config-work.yml'
 alias gh-personal='GH_HOST=github.com gh dash --config ~/.config/gh-dash/config-personal.yml'
+set -gx PATH $HOME/go-sdk/go/bin $HOME/go/bin $PATH
