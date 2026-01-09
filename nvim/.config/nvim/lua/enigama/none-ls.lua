@@ -15,8 +15,9 @@ function M.config()
 		debug = false,
 		sources = {
 			formatting.stylua,
-			formatting.prettier,
-			-- null_ls.builtins.completion.spell,
+			formatting.prettier.with({
+				extra_filetypes = { "github-actions-workflow" },
+			}), -- null_ls.builtins.completion.spell,
 		},
 
 		on_attach = function(client, bufnr)

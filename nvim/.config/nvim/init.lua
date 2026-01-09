@@ -2,6 +2,7 @@ require("enigama.launch")
 require("enigama.options")
 require("enigama.keymaps")
 require("enigama.autocmds")
+require("enigama.gh-actions")
 
 spec("enigama.alpha")
 -- spec("enigama.extras.fidget")
