@@ -3,7 +3,7 @@ set PAATH XDG_CONFIG_HOME $HOME /usr/bin/fish
 set -gx EDITOR nvim
 
 set -gx NVM_DIR $HOME/.nvm
-set -x LANGUAGES_NODE_VERSION '22.14.0'
+set --universal nvm_default_version v24.13.0
 
 set MAC_DACTYL CE:23:05:69:BD:65
 set MAC_AIRPODS_PRO 08:FF:44:17:B3:B7
