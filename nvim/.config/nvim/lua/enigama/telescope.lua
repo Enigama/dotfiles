@@ -10,7 +10,7 @@ function M.config()
 		{"<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
 		{"<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
 		-- ["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-		{"<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
+		{"<leader>fg", function() require("enigama.multigrep")() end, desc = "Multi Grep" },
 		{"<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
 		{"<leader>fr", "<cmd>Telescope resume<cr>", desc = "Last Search" },
 		{"<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
