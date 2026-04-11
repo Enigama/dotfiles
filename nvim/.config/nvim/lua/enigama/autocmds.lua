@@ -74,3 +74,12 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 		end
 	end,
 })
+
+-- List of typescript ererors in quickfix list
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "typescript,typescriptreact",
+	callback = function()
+		vim.opt_local.makeprg = "npx tsc --noEmit"
+		vim.opt_local.errorformat = "%f(%l\\,%c): error TS%n: %m,%f(%l\\,%c): warning TS%n: %m"
+	end,
+})

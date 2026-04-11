@@ -65,3 +65,33 @@ keymap("n", ",", "<cmd>:noh<cr>", opts)
 vim.api.nvim_set_keymap("t", "<C-;>", "<C-\\><C-n>", opts)
 
 keymap("n", "<leader>P", ":Alpha<CR>", opts)
+
+-- Sort selected lines by length
+vim.keymap.set("v", "<leader>sl", function()
+	-- 1. Exit visual mode to update the '< and '> marks
+	-- 'true' and 'false' arguments handle the escape sequence
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "x", true)
+
+	-- 2. Get the positions
+	local start_pos = vim.fn.getpos("'<")[2]
+	local end_pos = vim.fn.getpos("'>")[2]
+
+	-- 3. Normalize: ensure start_line is the minimum (handles bottom-to-top selection)
+	local start_line = math.min(start_pos, end_pos)
+	local end_line = math.max(start_pos, end_pos)
+
+	-- 4. Get the lines (start_line - 1 because nvim_buf_get_lines is 0-indexed)
+	local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+
+	-- 5. Sort the table by string length
+	table.sort(lines, function(a, b)
+		return #a < #b
+	end)
+
+	-- 6. Put the sorted lines back
+	vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
+end, { desc = "Sort selection by line length" })
+
+-- Quickfix better navigation
+keymap("n", "]q", "<cmd>cnext<cr>zz")
+keymap("n", "[q", "<cmd>cprev<cr>zz")

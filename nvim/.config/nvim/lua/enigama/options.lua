@@ -26,7 +26,18 @@ vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 4 -- insert 2 spaces for a tab
 vim.opt.cursorline = true -- highlight the current line
 vim.opt.number = true -- set numbered lines
-vim.opt.laststatus = 3
+vim.opt.laststatus = 3 -- 3 shows the status line always, 2 only when there are at least two windows, 1 never
+vim.opt.statusline = table.concat({
+	"%f", -- file path
+	" %m", -- modified flag [+]
+	"%r", -- readonly flag [RO]
+	"%y", -- file type [vim]
+	"%=", -- right-align everything after this
+	"line:%l", -- current line
+	"/%L", -- total lines
+	" col:%c", -- current column
+	" %p%%", -- percentage through file
+})
 vim.opt.showcmd = false
 vim.opt.ruler = false
 vim.opt.relativenumber = true -- set relative numbered lines
@@ -38,17 +49,21 @@ vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h12" -- the font used in graphical neovim applications
 vim.opt.title = false
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
-vim.opt.fillchars:append {
-  stl = " ",
-}
+vim.opt.fillchars:append({
+	stl = " ",
+})
 
-vim.opt.shortmess:append "c"
+vim.opt.shortmess:append("c")
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
+vim.cmd("set whichwrap+=<,>,[,],h,l")
+vim.cmd([[set iskeyword+=-]])
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
 
 vim.g.cmake_link_compile_commands = 1
 vim.g.neoformat_enabled_cpp = { "uncrustify" }
+
+-- Output of tsc --noEmit in a quickfix, need to run this-> :make | copen
+vim.opt_local.makeprg = "tsc --noEmit"
+vim.opt_local.errorformat = "%f(%l,%c): error TS%n: %m,%f(%l,%c): warning TS%n: %m"
