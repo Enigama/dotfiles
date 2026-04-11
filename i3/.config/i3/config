@@ -235,8 +235,6 @@ bindsym $mod+q exec indicator-sound-switcher
 # Volume
 bindsym $mod+[ exec dmenu tr -d '\n' | gnome-terminal "amixer -D pulse sset Master 10%"
 
-exec_always "setxkbmap -layout us,ua"
-exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
 exec --no-startup-id "setxkbmap -model pc105 -layout us,ua -option grp:alt_shift_toggle"
 exec --no-startup-id feh --bg-scale ~/wallpaper/stng.jpg
 exec --no-startup-id indicator-sound-switcher

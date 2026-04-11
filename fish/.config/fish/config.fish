@@ -287,10 +287,9 @@ function bInfo --description "Show bluetooth info about specific device"
         end
     end
 end
-function connectM
-    echo "print 1"
-    echo "print 2"
-    echo "print 3"
+
+function ...
+    cd ../../
 end
 
 function reminder
@@ -301,7 +300,14 @@ function suspend
     systemctl suspend
 end
 
+# Language service
+function lang
+   setxkbmap -model pc105 -layout us,ua -option grp:alt_shift_toggle
+end
+
 # GitHub Dash
 alias gh-work='GH_HOST=work.github.com gh dash --config ~/.config/gh-dash/config-work.yml'
 alias gh-personal='GH_HOST=github.com gh dash --config ~/.config/gh-dash/config-personal.yml'
+
 set -gx PATH $HOME/go-sdk/go/bin $HOME/go/bin $PATH
+fish_add_path ~/.local/bin
