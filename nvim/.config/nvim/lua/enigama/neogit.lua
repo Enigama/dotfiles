@@ -6,7 +6,7 @@ local M = {
 function M.config()
 	local icons = require("enigama.icons")
 	local wk = require("which-key")
-	wk.register({
+	wk.add({
 		["<leader>gg"] = { "<cmd>Neogit<CR>", "Neogit" },
 	})
 

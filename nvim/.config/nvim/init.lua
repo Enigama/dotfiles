@@ -4,7 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 -- Mason-installed CLIs (stylua, language servers) must win over older distro binaries.
 local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
 if vim.fn.isdirectory(mason_bin) == 1 then
-	vim.env.PATH = mason_bin .. ":" .. (vim.env.PATH or "")
+    vim.env.PATH = mason_bin .. ":" .. (vim.env.PATH or "")
 end
 
 require("enigama.launch")
@@ -72,9 +72,6 @@ spec("enigama.copilot")
 
 -- Jenkins Integration
 --spec("enigama.jenkins")
-
--- Audio
-require("enigama.wishper")
 
 require("enigama.lazy")
 

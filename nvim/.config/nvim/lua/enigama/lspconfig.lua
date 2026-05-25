@@ -1,5 +1,6 @@
 local M = {
 	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {},
 }
 
@@ -88,7 +89,7 @@ function M.config()
 		{ "<leader>r", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
 	})
 
-	-- local lspconfig = require("lspconfig")
+	local lspconfig = require("lspconfig")
 	local icons = require("enigama.icons")
 
 	local servers = {
@@ -130,6 +131,10 @@ function M.config()
 
 	vim.diagnostic.config(default_diagnostic_config)
 
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+	vim.lsp.handlers["textDocument/signatureHelp"] =
+		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
 	-- Nvim 0.12+ built-in stylua LSP uses `stylua --lsp` (StyLua >= 2.2.0). Older binaries error out;
 	-- formatting still works via none-ls. Upgrade Mason stylua when the registry ships 2.2+.
 	if vim.fn.has("nvim-0.12") == 1 then
@@ -162,9 +167,7 @@ function M.config()
 			opts = vim.tbl_deep_extend("force", settings, opts)
 		end
 
-		-- lspconfig[server].setup(opts)
-		vim.lsp.config(server, opts)
-		vim.lsp.enable(server)
+		lspconfig[server].setup(opts)
 	end
 end
 
