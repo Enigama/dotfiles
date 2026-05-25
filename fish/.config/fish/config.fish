@@ -14,6 +14,9 @@ set MAC_MOUSE D2:33:87:CC:53:C3
 set -l openai_key (string trim (cat ~/.config/ai/OPENAI_API_key))
 set -gx OPENAI_API_KEY $openai_key
 
+set -l anthropic_key (string trim (cat ~/.config/CLAUDE_TOKEN 2>/dev/null))
+set -gx ANTHROPIC_API_KEY $anthropic_key
+
 set -l jira_token (string trim (cat ~/.config/JIRA_TOKEN 2>/dev/null))
 set -gx JIRA_TOKEN $jira_token
 
