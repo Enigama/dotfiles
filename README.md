@@ -20,6 +20,7 @@ First of all we have to have all required dependencies for each part of soul.
 | --------|------------ | -----------|
 |blueman| bluetooth gui manager| `sudo apt install blueman & sudo apt install bluez bluez-obexd`|
 |pavucontrols| volume controle|`sudo apt install pavucontrol`|
+|xclip| copy/paste to/from the clipboard in the terminal|`sudo apt install xclip`|
 
 `i3`
 | Package | Description | Command(s) |
@@ -27,7 +28,7 @@ First of all we have to have all required dependencies for each part of soul.
 | feh | background tool | `sudo apt install feh` |
 | switch-indicator | switch bwtween autdio devices like Airpods | `sudo snap install indicator-sound-switcher` |
 | compton | terminal tarnsparency | `sudo apt install compton` |
-|(custome)i3 status|Bumblebee status, clone into i3 folder after installing i3 and stow it| `git clone git://github.com/tobi-wan-kenobi/bumblebee-status`|
+|(custome)i3 status|Bumblebee status, clone into i3 folder after installing i3 and stow it| `git clone https://github.com/tobi-wan-kenobi/bumblebee-status`|
 | flameshot | Make screenshots | `sudo apt install flameshot` |
 
 `nvim (btw)`

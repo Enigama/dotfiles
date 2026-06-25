@@ -196,10 +196,13 @@ bar {
     }
 	position top
     font pango:monospace 9
-	status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-     	-m memory battery date time pasink pasource \
-     	-p time.format="%H:%M" \
+	status_command env TZ=America/Los_Angeles ~/.config/i3/bumblebee-status/bumblebee-status \
+     	-m memory battery date timetz:la timetz:kyiv pasink pasource \
      	-p date.format="%a %m/%d/%Y" \
+     	-p la.format="LA %I:%M %p" \
+     	-p la.timezone="America/Los_Angeles" \
+     	-p kyiv.format="UA %H:%M" \
+     	-p kyiv.timezone="Europe/Kyiv" \
      	-t gruvbox-powerline
 }
 #Colors

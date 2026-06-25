@@ -56,6 +56,8 @@ install_apt() {
     feh compton flameshot pavucontrol nautilus ranger
     blueman bluez bluez-obexd
     ripgrep luarocks python3 python3-pip lsof unzip fontconfig
+    xclip
+    git-delta
   )
   sudo apt update
   sudo apt install -y "${pkgs[@]}"
@@ -80,7 +82,7 @@ install_snaps() {
     sudo apt install -y snapd
   fi
   snap_install nvim --classic
-  snap_install gh
+  snap_install gh --classic
   snap_install indicator-sound-switcher
 }
 
@@ -185,7 +187,23 @@ set_default_terminal() {
 }
 
 # ---------------------------------------------------------------------------
-# 11. Pre-install nvim plugins headlessly so first launch is ready.
+# 11. tree-sitter CLI (required by nvim-treesitter main branch on nvim 0.12+).
+#     Prebuilt static binary — upstream advises against the npm build.
+# ---------------------------------------------------------------------------
+install_treesitter_cli() {
+  if have tree-sitter; then
+    log "tree-sitter CLI already installed"
+    return
+  fi
+  log "Installing tree-sitter CLI (prebuilt binary)"
+  mkdir -p "$HOME/.local/bin"
+  curl -fsSL https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz \
+    | gunzip > "$HOME/.local/bin/tree-sitter"
+  chmod +x "$HOME/.local/bin/tree-sitter"
+}
+
+# ---------------------------------------------------------------------------
+# 12. Pre-install nvim plugins headlessly so first launch is ready.
 # ---------------------------------------------------------------------------
 sync_nvim() {
   log "Syncing nvim plugins (headless)"
@@ -193,7 +211,7 @@ sync_nvim() {
 }
 
 # ---------------------------------------------------------------------------
-# 12. Final manual steps (printed, not executed).
+# 13. Final manual steps (printed, not executed).
 # ---------------------------------------------------------------------------
 print_next_steps() {
   cat <<'EOF'
@@ -235,6 +253,7 @@ main() {
   install_tpm
   install_font
   set_default_terminal
+  install_treesitter_cli
   sync_nvim
   print_next_steps
   log "Bootstrap complete."
