@@ -131,9 +131,10 @@ function M.config()
 
 	vim.diagnostic.config(default_diagnostic_config)
 
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-	vim.lsp.handlers["textDocument/signatureHelp"] =
-		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+	-- Nvim 0.12 removed vim.lsp.with()/handler overrides for float borders.
+	-- The global `winborder` option now styles all LSP floats (hover,
+	-- signature help) plus other unbordered floating windows.
+	vim.o.winborder = "rounded"
 
 	-- Nvim 0.12+ built-in stylua LSP uses `stylua --lsp` (StyLua >= 2.2.0). Older binaries error out;
 	-- formatting still works via none-ls. Upgrade Mason stylua when the registry ships 2.2+.

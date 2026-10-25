@@ -20,6 +20,7 @@ First of all we have to have all required dependencies for each part of soul.
 | --------|------------ | -----------|
 |blueman| bluetooth gui manager| `sudo apt install blueman & sudo apt install bluez bluez-obexd`|
 |pavucontrols| volume controle|`sudo apt install pavucontrol`|
+|xclip| copy/paste to/from the clipboard in the terminal|`sudo apt install xclip`|
 
 `i3`
 | Package | Description | Command(s) |
@@ -27,7 +28,7 @@ First of all we have to have all required dependencies for each part of soul.
 | feh | background tool | `sudo apt install feh` |
 | switch-indicator | switch bwtween autdio devices like Airpods | `sudo snap install indicator-sound-switcher` |
 | compton | terminal tarnsparency | `sudo apt install compton` |
-|(custome)i3 status|Bumblebee status, clone into i3 folder after installing i3 and stow it| `git clone git://github.com/tobi-wan-kenobi/bumblebee-status`|
+|(custome)i3 status|Bumblebee status, clone into i3 folder after installing i3 and stow it| `git clone https://github.com/tobi-wan-kenobi/bumblebee-status`|
 | flameshot | Make screenshots | `sudo apt install flameshot` |
 
 `nvim (btw)`
@@ -43,43 +44,49 @@ First of all we have to have all required dependencies for each part of soul.
 
 ## Installation
 
-1. `i3` `sudo apt install i3`
+### Primary: Ubuntu + i3 (one line)
 
-2. `kitty` terminal
-   `sudo apt install kitty`
+On a fresh laptop, this clones the repo, installs every dependency (apt + snap),
+stows all configs, sets up fisher/node/yarn/tpm and the Nerd Font, and makes
+kitty the default terminal:
 
-To set kitty as default terminal run this command and choose kitty.
-
-```
-sudo update-alternatives --config x-terminal-emulator
-```
-
-3. `tmux` `sudo apt install tmux` To make it works properly check the guide
-
-```
-https://github.com/tmux-plugins/tpm
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/Enigama/dotfiles/main/bootstrap.sh)
 ```
 
-4. `fish` shell
-   `sudo apt-get install fish`
+`bootstrap.sh` is idempotent — safe to re-run. From an existing clone just run
+`./bootstrap.sh`.
 
-Make fish default shell:
+> **After it finishes — two manual steps** (secrets are intentionally not in the repo):
+>
+> 1. Copy your secret files (`config.fish` reads these on startup):
+>    `~/.config/ai/OPENAI_API_key`, `~/.config/CLAUDE_TOKEN`, `~/.config/JIRA_TOKEN`,
+>    `~/.config/JIRA_URL`, `~/.config/ELECTRICITY_TOKEN`, and SSH keys
+>    `~/.ssh/{work,personal}_id_rsa`.
+> 2. **Only after secrets are in place**, make fish your default shell and log out/in:
+>    ```bash
+>    chsh -s $(which fish)
+>    ```
+>    The script does **not** do this for you on purpose — switching to fish before
+>    the secret files exist makes `config.fish` error and clear the screen on every login.
 
+The dependency tables above list what gets installed if you prefer to do it by hand.
+
+### Secondary: Omarchy (Arch + Hyprland)
+
+[Omarchy](https://omarchy.org) is DHH's opinionated Arch + Hyprland distro. Install
+it from its ISO first, boot in, then layer these dotfiles (fish, nvim, tmux, kitty)
+plus a Hyprland keybinding set ported from the i3 config:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/Enigama/dotfiles/main/bootstrap-omarchy.sh)
 ```
-chsh -s $(which fish)
-```
 
-Plugin manager for `fish` -> `fisher` repo `https://github.com/jorgebucaran/fisher`
-
-Do it in fish shell
-
-```
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher && fisher install jorgebucaran/nvm.fish
-```
-
-5. `nvim` btw `sudo snap install nvim --classic`
-6. `yarn` optional but necessary for fish shortcuts `npm install --global yarn`
-7. `stow` `sudo apt install stow` this for linking dotfiles
+This skips the X11-only bits (i3, feh, compton, flameshot) since Omarchy/Hyprland
+already provide them. It backs up Omarchy's own nvim config to
+`~/.config/nvim.omarchy.bak`, writes the ported keybindings to
+`~/.config/hypr/custom-i3-binds.conf`, and never touches `~/.local/share/omarchy`.
+The same "copy secrets, then `chsh`" follow-up applies.
 
 ## Git Setup
 
